@@ -1,3 +1,4 @@
+
 <template>
   <div class="login-wrapper">
     <div class="login-form">
@@ -13,6 +14,10 @@
           <el-button type="primary" @click="handleLogin">登录</el-button>
         </el-form-item>
       </el-form>
+      <div class="login-register">
+        <span>没有账号？</span>
+        <a @click.prevent="handleRegister">立即注册</a>
+      </div>
     </div>
   </div>
 </template>
@@ -52,6 +57,10 @@ export default defineComponent({
         }
       });
     },
+    handleRegister() {
+      // 跳转到注册页面
+      this.$router.push('/register');
+    },
   },
 });
 </script>
@@ -78,5 +87,24 @@ export default defineComponent({
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+}
+
+.login-register {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-register span {
+  margin-right: 10px;
+}
+
+.login-register a {
+  color: #409EFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login-register a:hover {
+  text-decoration: underline;
 }
 </style>
