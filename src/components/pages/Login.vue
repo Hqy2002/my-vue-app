@@ -1,34 +1,82 @@
 <template>
-  <div class="login">
-    <h2>Login</h2>
-    <form>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required>
-      </div>
-      <button @click.prevent="login">Login</button>
-      <router-link to="/register">Register</router-link>
-    </form>
+  <div class="login-wrapper">
+    <div class="login-form">
+      <h2 class="login-title">用户登录</h2>
+      <el-form :model="loginForm" ref="loginForm" :rules="loginRules" label-width="80px">
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="loginForm.password" type="password" placeholder="请输入密码"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="handleLogin">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue';
+import { ElForm, ElFormItem, ElInput, ElButton } from 'element-plus';
+
+export default defineComponent({
+  components: {
+    ElForm,
+    ElFormItem,
+    ElInput,
+    ElButton,
+  },
   data() {
     return {
-      email: '',
-      password: ''
-    }
+      loginForm: {
+        username: '',
+        password: '',
+      },
+      loginRules: {
+        username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+      },
+    };
   },
   methods: {
-    login() {
-      // add your login logic here
-      console.log('login', this.email, this.password)
-    }
-  }
-}
+    handleLogin() {
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          // 登录逻辑，这里只做演示
+          this.$message.success('登录成功');
+        } else {
+          this.$message.error('请填写完整的登录信息');
+          return false;
+        }
+      });
+    },
+  },
+});
 </script>
+
+<style scoped>
+.login-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-form {
+  width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+</style>
