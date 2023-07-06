@@ -1,7 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 import Login from './components/pages/Login.vue'
 import Register from "./components/pages/Register.vue";
+
 </script>
 
 <template>
@@ -16,6 +16,7 @@ import Register from "./components/pages/Register.vue";
 
   <Login>'msg='hello'</Login>
   <Register>'msg='hello'</Register>
+
 
 </template>
 
