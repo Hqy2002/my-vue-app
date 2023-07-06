@@ -14,6 +14,7 @@
           <el-button type="primary" @click="handleLogin">登录</el-button>
         </el-form-item>
       </el-form>
+
       <div class="login-register">
         <span>没有账号？</span>
         <a @click.prevent="handleRegister">立即注册</a>
