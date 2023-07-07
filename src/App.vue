@@ -1,38 +1,59 @@
-<script setup>
-import Login from './components/pages/Login.vue'
-import Register from "./components/pages/Register.vue";
-
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" className="logo" alt="Vite logo"/>
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" className="logo vue" alt="Vue logo"/>
-    </a>
+  <div id="app">
+    <el-container>
+      <el-aside>
+        <image-uploader />
+      </el-aside>
+      <el-main>
+        <el-row>
+          <el-col :span="12">
+            <image-display />
+          </el-col>
+          <el-col :span="12">
+            <coordinates-form />
+          </el-col>
+        </el-row>
+      </el-main>
+    </el-container>
   </div>
-
-  <Login>'msg='hello'</Login>
-  <Register>'msg='hello'</Register>
-
-
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script>
+import ImageUploader from './components/ImageUploader.vue';
+import ImageDisplay from './components/ImageDisplay.vue';
+import CoordinatesForm from './components/CoordinatesForm.vue';
+
+export default {
+  components: {
+    ImageUploader,
+    ImageDisplay,
+    CoordinatesForm,
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+el-container,
+el-aside,
+el-main {
+  height: 100%;
 }
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+el-aside {
+  width: 300px;
+  padding: 20px;
+}
+
+el-row {
+  padding: 20px;
 }
 </style>
