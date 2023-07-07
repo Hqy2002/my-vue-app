@@ -6,7 +6,7 @@
         accept=".jpg"
         @success="handleUploadSuccess"
     >
-      <el-button icon="el-icon-upload" type="primary">点击上传</el-button>
+      <el-button  type="primary">点击上传</el-button>
     </el-upload>
     <div v-if="thumbnail">
       <img :src="thumbnail" alt="缩略图" />

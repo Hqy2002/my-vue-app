@@ -3,6 +3,7 @@ import Login from './components/pages/Login.vue'
 import Register from './components/pages/Register.vue'
 import PicUpload from "./components/widgts/picUpload.vue";
 import PicResultShow from "./components/widgts/picResultShow.vue";
+// import HeatMap from './HeatMap.vue'
 const routes = [
     {
         path: '/login',
@@ -13,7 +14,15 @@ const routes = [
         path: '/register',
         name: 'Register',
         component: Register
-    }]
+    },
+    // {
+    //     path: '/heatMap',
+    //     name: 'HeatMap',
+    //     component: HeatMap
+    // }
+
+
+]
 /*    {
         path: '/picUpload',
         name: 'PicUpload',
